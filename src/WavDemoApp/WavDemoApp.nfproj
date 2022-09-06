@@ -27,17 +27,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.10.5\lib\mscorlib.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.ResourceManager">
-      <HintPath>..\packages\nanoFramework.ResourceManager.1.1.2\lib\nanoFramework.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Device.Dac">
-      <HintPath>..\packages\nanoFramework.System.Device.Dac.1.4.1\lib\System.Device.Dac.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="Resources\wavsample.dat" />
   </ItemGroup>
@@ -49,6 +38,17 @@
       <Generator>nFResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.12.0\lib\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.ResourceManager">
+      <HintPath>..\packages\nanoFramework.ResourceManager.1.1.4\lib\nanoFramework.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device.Dac">
+      <HintPath>..\packages\nanoFramework.System.Device.Dac.1.4.3\lib\System.Device.Dac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>

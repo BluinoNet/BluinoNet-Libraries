@@ -23,10 +23,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.10.5\lib\mscorlib.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.12.0\lib\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Windows.Devices.Pwm">
-      <HintPath>..\packages\nanoFramework.Windows.Devices.Pwm.1.6.0\lib\Windows.Devices.Pwm.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.Windows.Devices.Pwm.1.6.2\lib\Windows.Devices.Pwm.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

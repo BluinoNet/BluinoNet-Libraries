@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Device.Gpio;
+using System.Device.Pwm;
 using System.Threading;
-using Windows.Devices.Pwm;
+//using Windows.Devices.Pwm;
 
 namespace nanoFramework.MotorL298
 {
@@ -9,7 +10,7 @@ namespace nanoFramework.MotorL298
 	{
 		private const int STEP_FACTOR = 250;
 
-		private PwmPin pwm;
+		private PwmChannel pwm;
 		//private GpioPin direction;
 		private double lastSpeed;
 
@@ -20,9 +21,18 @@ namespace nanoFramework.MotorL298
 		/// <param name="socketNumber">The socket that this module is plugged in to.</param>
 		public MotorDriverL298(int pinPwmNumber)
 		{
+			//esp32
+            //Configuration.SetPinFunction(18, DeviceFunction.PWM3);
+            pwm = PwmChannel.CreateFromPin(18, 40000);
+            // You can check then if it has created a valid one:
+            if (pwm != null)
+            {
+                // You do have a valid one
+            }
 
-			PwmController pwmCtl = PwmController.GetDefault();
-			this.pwm = pwmCtl.OpenPin(pinPwmNumber);
+
+            //PwmController pwmCtl = PwmController.GetDefault();
+			//this.pwm = pwmCtl.OpenPin(pinPwmNumber);
 
 			//this.direction = 
 
@@ -53,8 +63,8 @@ namespace nanoFramework.MotorL298
 				speed = -0.99;
 
 			//this.direction.Write(speed < 0);
-			this.pwm.Controller.SetDesiredFrequency(this.Frequency);
-			this.pwm.SetActiveDutyCyclePercentage(speed < 0 ? 1 + speed : speed);
+			this.pwm.Frequency = (this.Frequency);
+			this.pwm.DutyCycle = (speed < 0 ? 1 + speed : speed);
 			this.lastSpeed = speed;
 		}
 

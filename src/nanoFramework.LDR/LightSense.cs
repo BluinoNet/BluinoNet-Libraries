@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Device.Adc;
 using System.Diagnostics;
-using Windows.Devices.Adc;
+//using Windows.Devices.Adc;
 
 namespace nanoFramework.LDR
 {
@@ -15,14 +16,17 @@ namespace nanoFramework.LDR
 		/// <param name="socketNumber">The socket that this module is plugged in to.</param>
 		public LightSense(int channelNum)
 		{
-			//Socket socket = Socket.GetSocket(socketNumber, true, this, null);
-			//socket.EnsureTypeIsSupported('A', this);
-			string devs = AdcController.GetDeviceSelector();
+            //Socket socket = Socket.GetSocket(socketNumber, true, this, null);
+            //socket.EnsureTypeIsSupported('A', this);
+            //string devs = AdcController.GetDeviceSelector();
 
-			Debug.WriteLine("devs=" + devs);
+            //Debug.WriteLine("devs=" + devs);
+            AdcController adc1 = new AdcController();
 
-			AdcController adc1 = AdcController.GetDefault();
-			this.input = adc1.OpenChannel(channelNum);
+
+ 
+            //AdcController adc1 = AdcController.GetDefault();
+			this.input = adc1.OpenChannel(channelNum); //adc1.OpenChannel(channelNum);
 			//this.input = GTI.AnalogInputFactory.Create(socket, Socket.Pin.Three, this);
 		}
 

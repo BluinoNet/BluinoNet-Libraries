@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Device.I2c;
 using System.Diagnostics;
-using Windows.Devices.I2c;
+//using Windows.Devices.I2c;
 
 namespace nanoFramework.SSD1306B
 {
@@ -35,11 +36,8 @@ namespace nanoFramework.SSD1306B
 
         public SSD1306(string deviceName, int width = 128, int height = 64, int slaveaddresses = 0x3C)
         {
-            var device = I2cDevice.FromId(deviceName, new I2cConnectionSettings(slaveaddresses)
-            {
-                BusSpeed = I2cBusSpeed.StandardMode,
-                SharingMode = I2cSharingMode.Shared
-            });
+            //var device = I2cDevice.FromId(deviceName, new I2cConnectionSettings(slaveaddresses)
+            var device = I2cDevice.Create(new I2cConnectionSettings(1, slaveaddresses, I2cBusSpeed.StandardMode));
 
 
             this._device = device;

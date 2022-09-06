@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Device.Adc;
 using System.Device.Gpio;
 using System.Diagnostics;
-using Windows.Devices.Adc;
+//using Windows.Devices.Adc;
 
 namespace nanoFramework.MQ3
 {
@@ -28,17 +29,20 @@ namespace nanoFramework.MQ3
 		/// <param name="socketNumber">The socket that this module is plugged in to.</param>
 		public GasSense(int channelADC,int heatingPin)
 		{
-			//Socket socket = Socket.GetSocket(socketNumber, true, this, null);
-			//socket.EnsureTypeIsSupported('A', this);
-			string devs = AdcController.GetDeviceSelector();
+            AdcController adc1 = new AdcController();
 
-			Debug.WriteLine("devs=" + devs);
+            //Socket socket = Socket.GetSocket(socketNumber, true, this, null);
+            //socket.EnsureTypeIsSupported('A', this);
+            //string devs = AdcController.GetDeviceSelector();
 
-			AdcController adc1 = AdcController.GetDefault();
+			//Debug.WriteLine("devs=" + devs);
+
+			//AdcController adc1 = AdcController.GetDefault();
 			
-			this.input = adc1.OpenChannel(channelADC);
-			//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Three, this);
-			var gpio = new GpioController();
+			this.input =  adc1.OpenChannel(channelADC);
+			//adc1.OpenChannel(channelADC);
+                                                         //GTI.AnalogInputFactory.Create(socket, Socket.Pin.Three, this);
+            var gpio = new GpioController();
 			this.enable = gpio.OpenPin(heatingPin, PinMode.Output);
 			this.enable.Write(PinValue.Low);
 			//GTI.DigitalOutputFactory.Create(socket, Socket.Pin.Four, false, this);

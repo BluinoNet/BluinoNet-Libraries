@@ -23,10 +23,13 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.10.5\lib\mscorlib.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.12.0\lib\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device.Adc">
+      <HintPath>..\packages\nanoFramework.System.Device.Adc.1.0.2\lib\System.Device.Adc.dll</HintPath>
     </Reference>
     <Reference Include="Windows.Devices.Adc">
-      <HintPath>..\packages\nanoFramework.Windows.Devices.Adc.1.5.1\lib\Windows.Devices.Adc.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.Windows.Devices.Adc.1.5.3\lib\Windows.Devices.Adc.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

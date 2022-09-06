@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Device.Adc;
 using System.Device.Gpio;
 using System.Diagnostics;
-using Windows.Devices.Adc;
+//using Windows.Devices.Adc;
 
 namespace nanoFramework.Joystick2Axis
 {
@@ -67,18 +68,21 @@ namespace nanoFramework.Joystick2Axis
 		/// <param name="socketNumber">The mainboard socket that has the module plugged into it.</param>
 		public Joystick(int channelX,int channelY,int pinInput)
 		{
-			//Socket socket = Socket.GetSocket(socketNumber, true, this, null);
-			//socket.EnsureTypeIsSupported('A', this);
-			string devs = AdcController.GetDeviceSelector();
+            //Socket socket = Socket.GetSocket(socketNumber, true, this, null);
+            //socket.EnsureTypeIsSupported('A', this);
+            //string devs = AdcController.GetDeviceSelector();
 
-			Debug.WriteLine("devs=" + devs);
+            //Debug.WriteLine("devs=" + devs);
 
-			AdcController adc1 = AdcController.GetDefault();
+            //AdcController adc1 = AdcController.GetDefault();
+            AdcController adc1 = new AdcController();
 
-			
-			this.inputX = adc1.OpenChannel(channelX);//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Four, this);
-			this.inputY = adc1.OpenChannel(channelY);//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Five, this);
-			var gpio = new GpioController();
+            
+
+
+            this.inputX = adc1.OpenChannel(channelX);//adc1.OpenChannel(channelX);//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Four, this);
+            this.inputY = adc1.OpenChannel(channelY);//adc1.OpenChannel(channelY);//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Five, this);
+            var gpio = new GpioController();
 			this.input = gpio.OpenPin(pinInput,PinMode.InputPullUp); //GTI.InterruptInputFactory.Create(socket, GT.Socket.Pin.Three, GTI.GlitchFilterMode.On, GTI.ResistorMode.PullUp, GTI.InterruptMode.RisingAndFallingEdge, this);
 			this.input.ValueChanged += (a, b) => this.OnJoystickEvent(this,b.ChangeType == PinEventTypes.Rising ? ButtonState.Released : ButtonState.Pressed);
 

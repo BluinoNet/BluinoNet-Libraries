@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Device.Adc;
 using System.Diagnostics;
 using System.Threading;
-using Windows.Devices.Adc;
+//using Windows.Devices.Adc;
 
 namespace nanoFramework.ACS712
 {
@@ -13,15 +14,20 @@ namespace nanoFramework.ACS712
         /// <param name="socketNumber">The socket that this module is plugged in to.</param>
         public CurrentACS712(int channelNumber)
         {
+            AdcController adc1 = new AdcController();
+
+          
+
             //Socket socket = Socket.GetSocket(socketNumber, true, this, null);
             //socket.EnsureTypeIsSupported('A', this);
-            string devs = AdcController.GetDeviceSelector();
+            //string devs = AdcController.GetDeviceSelector();
 
-            Debug.WriteLine("devs=" + devs);
+            //Debug.WriteLine("devs=" + devs);
 
-            AdcController adc1 = AdcController.GetDefault();
+            //AdcController adc1 = AdcController.GetDefault();
 
-            this.input = adc1.OpenChannel(channelNumber);//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Five, this);
+            this.input = adc1.OpenChannel(channelNumber);
+            //adc1.OpenChannel(channelNumber);//GTI.AnalogInputFactory.Create(socket, Socket.Pin.Five, this);
         }
 
         /// <summary>Reads the alternating current value.</summary>

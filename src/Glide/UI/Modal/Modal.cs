@@ -55,7 +55,7 @@ namespace GHI.Glide.UI
         /// <summary>
         /// Background image.
         /// </summary>
-        public Bitmap BackImage = Resources.GetBitmap(Resources.BinaryResources.Modal);
+        public Bitmap BackImage = Resources.GetBitmap(Resources.BitmapResources.Modal);
 
         /// <summary>
         /// Titlebar height.

@@ -1,18 +1,20 @@
 using GHI.Glide;
 using GHI.Glide.Display;
-using nanoFramework.Hardware.Esp32;
-using nanoFramework.UI;
-using nanoFramework.UI.Input;
+using nanoFramework.M5Core2;
+using nanoFramework.M5Stack;
 using System;
 using System.Diagnostics;
 using System.Threading;
+using Console = nanoFramework.M5Stack.Console;
 
 namespace SimpleFormGlide
 {
     public class Program
     {
+
         public static void Main()
         {
+
             Debug.WriteLine("Hello from nanoFramework!");
             TestGlide();
             Thread.Sleep(Timeout.Infinite);
@@ -36,7 +38,7 @@ namespace SimpleFormGlide
             //Configuration.SetPinFunction(18, DeviceFunction.SPI1_CLOCK);
             // Adjust as well the size of your screen and the position of the screen on the driver
             //DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, backLightPin), new ScreenConfiguration(0, 0, 320, 240));
-            
+
             // Depending on you ESP32, you may also have to use either PWM either GPIO to set the backlight pin mode on
             // GpioController.OpenPin(backLightPin, PinMode.Output);
             // GpioController.Write(backLightPin, PinValue.High);
@@ -49,35 +51,110 @@ namespace SimpleFormGlide
             //inputProvider.AddButton(36, Button.VK_DOWN, true);
             #endregion
             //verify the interupt pin for lcd touch controller
-            var touch = new TouchController(nanoFramework.Hardware.Esp32.Gpio.IO13);
+            //var touch = new TouchController(nanoFramework.Hardware.Esp32.Gpio.IO13);
+            M5Core2.InitializeScreen(2 * 1024 * 1024);
 
-            GHI.Glide.Glide.SetupGlide(480, 272, 96, 0);
-            string GlideXML = @"<Glide Version=""1.0.7""><Window Name=""instance115"" Width=""480"" Height=""272"" BackColor=""dce3e7""><Button Name=""btn"" X=""40"" Y=""60"" Width=""120"" Height=""40"" Alpha=""255"" Text=""Click Me"" Font=""4"" FontColor=""000000"" DisabledFontColor=""808080"" TintColor=""000000"" TintAmount=""0""/><TextBlock Name=""TxtTest"" X=""42"" Y=""120"" Width=""300"" Height=""32"" Alpha=""255"" Text=""TextBlock"" TextAlign=""Left"" TextVerticalAlign=""Top"" Font=""6"" FontColor=""0"" BackColor=""000000"" ShowBackColor=""False""/></Window></Glide>";
+
+            GHI.Glide.Glide.SetupGlide(320, 240, 96, 0);
+            string GlideXML = @"<Glide Version=""1.0.7""><Window Name=""instance115"" Width=""320"" Height=""240"" BackColor=""dce3e7""><Button Name=""btn"" X=""40"" Y=""60"" Width=""120"" Height=""40"" Alpha=""255"" Text=""Click Me"" Font=""4"" FontColor=""000000"" DisabledFontColor=""808080"" TintColor=""000000"" TintAmount=""0""/><TextBlock Name=""TxtTest"" X=""42"" Y=""120"" Width=""250"" Height=""32"" Alpha=""255"" Text=""TextBlock"" TextAlign=""Left"" TextVerticalAlign=""Top"" Font=""6"" FontColor=""0"" BackColor=""000000"" ShowBackColor=""False""/><TextBlock Name=""TxtTest2"" X=""42"" Y=""150"" Width=""250"" Height=""32"" Alpha=""255"" Text=""TextBlock"" TextAlign=""Left"" TextVerticalAlign=""Top"" Font=""6"" FontColor=""0"" BackColor=""000000"" ShowBackColor=""False""/></Window></Glide>";
 
             //Resources.GetString(Resources.StringResources.Window)
             Window window = GlideLoader.LoadWindow(GlideXML);
 
-            GlideTouch.Initialize();
+
 
             GHI.Glide.UI.Button btn = (GHI.Glide.UI.Button)window.GetChildByName("btn");
             GHI.Glide.UI.TextBlock txt = (GHI.Glide.UI.TextBlock)window.GetChildByName("TxtTest");
+            GHI.Glide.UI.TextBlock txt2 = (GHI.Glide.UI.TextBlock)window.GetChildByName("TxtTest2");
             btn.TapEvent += (object sender) =>
             {
-                txt.Text = "Welcome to Glide for NanoFramework - Cheers from BMC)";
+                txt.Text = "Glide for NF";
                 Debug.WriteLine("Button tapped.");
 
                 window.Invalidate();
                 txt.Invalidate();
             };
-
+          
+            
             GHI.Glide.Glide.MainWindow = window;
+            M5Core2.TouchEvent += (object sender, nanoFramework.M5Core2.TouchEventArgs e) =>
+            {
+                const string StrLB = "LEFT BUTTON PRESSED  ";
+                const string StrMB = "MIDDLE BUTTON PRESSED  ";
+                const string StrRB = "RIGHT BUTTON PRESSED  ";
+                const string StrXY1 = "TOUCHED at X= ";
+                const string StrXY2 = ",Y= ";
+                const string StrID = ",Id= ";
+                const string StrDoubleTouch = "Double touch. ";
+                const string StrMove = "Moving... ";
+                const string StrLiftUp = "Lift up. ";
 
-            touch.CapacitiveScreenReleased += Lcd_CapacitiveScreenReleased;
-            touch.CapacitiveScreenPressed += Lcd_CapacitiveScreenPressed;
-            touch.CapacitiveScreenMove += Lcd_CapacitiveScreenMove;
+                Debug.WriteLine($"Touch Panel Event Received Category= {e.EventCategory} Subcategory= {e.TouchEventCategory}");
+                Console.CursorLeft = 0;
+                Console.CursorTop = 0;
+
+                Debug.WriteLine(StrXY1 + e.X + StrXY2 + e.Y + StrID + e.Id);
+                Console.WriteLine(StrXY1 + e.X + StrXY2 + e.Y + StrID + e.Id + "  ");
+
+                if ((e.TouchEventCategory & TouchEventCategory.LeftButton) == TouchEventCategory.LeftButton)
+                {
+                    Debug.WriteLine(StrLB);
+                    Console.WriteLine(StrLB);
+                }
+                else if ((e.TouchEventCategory & TouchEventCategory.MiddleButton) == TouchEventCategory.MiddleButton)
+                {
+                    Debug.WriteLine(StrMB);
+                    Console.WriteLine(StrMB);
+                }
+                else if ((e.TouchEventCategory & TouchEventCategory.RightButton) == TouchEventCategory.RightButton)
+                {
+                    Debug.WriteLine(StrRB);
+                    Console.WriteLine(StrRB);
+                }
+
+                if ((e.TouchEventCategory & TouchEventCategory.Moving) == TouchEventCategory.Moving)
+                {
+                    Debug.WriteLine(StrMove);
+                    Console.Write(StrMove);
+                    GlideTouch.RaiseTouchMoveEvent(sender, new GHI.Glide.TouchEventArgs(new GHI.Glide.Geom.Point(e.X, e.Y)));
+                }
+
+                if ((e.TouchEventCategory & TouchEventCategory.LiftUp) == TouchEventCategory.LiftUp)
+                {
+                    Debug.WriteLine(StrLiftUp);
+                    Console.Write(StrLiftUp);
+                    GlideTouch.RaiseTouchUpEvent(e.X, e.Y);
+                }
+
+                if ((e.TouchEventCategory & TouchEventCategory.DoubleTouch) == TouchEventCategory.DoubleTouch)
+                {
+                    Debug.WriteLine(StrDoubleTouch);
+                    Console.Write(StrDoubleTouch);
+                }
+
+                Console.WriteLine("                                    ");
+                Console.WriteLine("                                    ");
+                Console.WriteLine("                                    ");
+            };
+            GlideTouch.Initialize();
+            var count = 0;
+            Timer testTimer = new Timer((o) =>
+            {
+                Debug.WriteLine(DateTime.UtcNow.ToString("HH:mm:ss") + ": blink");
+                txt.Text = $"time: {DateTime.UtcNow.ToString("HH:mm:ss")}";
+                txt2.Text = $"Welcome to Glide ({count++})";
+                window.Invalidate();
+                txt.Invalidate();
+                txt2.Invalidate();
+            }, null, 1000, 1000);
+            //touch.CapacitiveScreenReleased += Lcd_CapacitiveScreenReleased;
+            //touch.CapacitiveScreenPressed += Lcd_CapacitiveScreenPressed;
+            //touch.CapacitiveScreenMove += Lcd_CapacitiveScreenMove;
             //Thread.Sleep(Timeout.Infinite);
         }
         #region Lcd Capacitive Touch Events
+
+        /*
         /// <summary>
         /// Function called when released event raises
         /// </summary>
@@ -105,6 +182,7 @@ namespace SimpleFormGlide
             Debug.WriteLine("you move finger on the lcd at X:" + e.X + " ,Y:" + e.Y);
             GlideTouch.RaiseTouchMoveEvent(sender, new GHI.Glide.TouchEventArgs(new GHI.Glide.Geom.Point(e.X, e.Y)));
         }
+        */
         #endregion
     }
 }

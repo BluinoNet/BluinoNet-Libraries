@@ -27,8 +27,8 @@ namespace GHI.Glide.UI
 
         private Bitmap _headers;
         private Bitmap _items;
-        private Bitmap _DataGridIcon_Asc = Resources.GetBitmap(Resources.BinaryResources.DataGridIcon_Asc);
-        private Bitmap _DataGridIcon_Desc = Resources.GetBitmap(Resources.BinaryResources.DataGridIcon_Desc);
+        private Bitmap _DataGridIcon_Asc = Resources.GetBitmap(Resources.BitmapResources.DataGridIcon_Asc);
+        private Bitmap _DataGridIcon_Desc = Resources.GetBitmap(Resources.BitmapResources.DataGridIcon_Desc);
 
         private bool _renderHeaders;
         private bool _renderItems;

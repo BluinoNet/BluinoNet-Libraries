@@ -19,7 +19,7 @@ namespace GHI.Glide.UI
     /// </summary>
     public class RadioButton : DisplayObject
     {
-        private Bitmap _RadioButton = Resources.GetBitmap(Resources.BinaryResources.RadioButton);
+        private Bitmap _RadioButton = Resources.GetBitmap(Resources.BitmapResources.RadioButton);
         private bool _pressed = false;
         private bool _checked = false;
         private string _value = String.Empty;

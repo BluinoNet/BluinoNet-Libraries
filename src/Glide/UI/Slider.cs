@@ -22,8 +22,8 @@ namespace GHI.Glide.UI
     /// </summary>
     public class Slider : DisplayObject
     {
-        private Bitmap _Button_Up = Resources.GetBitmap(Resources.BinaryResources.Button_Up);
-        private Bitmap _Button_Down = Resources.GetBitmap(Resources.BinaryResources.Button_Down);
+        private Bitmap _Button_Up = Resources.GetBitmap(Resources.BitmapResources.Button_Up);
+        private Bitmap _Button_Down = Resources.GetBitmap(Resources.BitmapResources.Button_Down);
 
         private bool _dragging = false;
         private string _direction = SliderDirection.Horizontal;

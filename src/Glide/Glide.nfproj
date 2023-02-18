@@ -93,28 +93,45 @@
     <None Include="Resources\droid_reg48.tinyfnt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\System.XML\System.XML.nfproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.2\lib\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Graphics">
+      <HintPath>..\packages\nanoFramework.Graphics.1.1.17\lib\nanoFramework.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.ResourceManager">
+      <HintPath>..\packages\nanoFramework.ResourceManager.1.2.13\lib\nanoFramework.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Events">
+      <HintPath>..\packages\nanoFramework.Runtime.Events.1.11.6\lib\nanoFramework.Runtime.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Native">
+      <HintPath>..\packages\nanoFramework.Runtime.Native.1.6.6\lib\nanoFramework.Runtime.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.System.Collections">
+      <HintPath>..\packages\nanoFramework.System.Collections.1.5.18\lib\nanoFramework.System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.System.Text">
+      <HintPath>..\packages\nanoFramework.System.Text.1.2.37\lib\nanoFramework.System.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>..\packages\nanoFramework.System.IO.FileSystem.1.1.23\lib\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Streams">
+      <HintPath>..\packages\nanoFramework.System.IO.Streams.1.1.38\lib\System.IO.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Math">
+      <HintPath>..\packages\nanoFramework.System.Math.1.5.29\lib\System.Math.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
       <Generator>nFResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Button_Down.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Button_Up.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CheckBox_Off.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CheckBox_On.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DataGridIcon_Asc.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DataGridIcon_Desc.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DropdownButton_Down.gif" />
@@ -159,39 +176,22 @@
     <None Include="Resources\TextBox.gif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\System.XML\System.XML.nfproj" />
+    <None Include="Resources\Button_Down.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.12.0\lib\mscorlib.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.Graphics">
-      <HintPath>..\packages\nanoFramework.Graphics.1.0.3.6\lib\nanoFramework.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.ResourceManager">
-      <HintPath>..\packages\nanoFramework.ResourceManager.1.1.4\lib\nanoFramework.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.Runtime.Events">
-      <HintPath>..\packages\nanoFramework.Runtime.Events.1.10.0\lib\nanoFramework.Runtime.Events.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.Runtime.Native">
-      <HintPath>..\packages\nanoFramework.Runtime.Native.1.5.4\lib\nanoFramework.Runtime.Native.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.System.Collections">
-      <HintPath>..\packages\nanoFramework.System.Collections.1.4.0\lib\nanoFramework.System.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.System.Text">
-      <HintPath>..\packages\nanoFramework.System.Text.1.2.3\lib\nanoFramework.System.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.FileSystem">
-      <HintPath>..\packages\nanoFramework.System.IO.FileSystem.1.1.2\lib\System.IO.FileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Streams">
-      <HintPath>..\packages\nanoFramework.System.IO.Streams.1.1.9\lib\System.IO.Streams.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Math">
-      <HintPath>..\packages\nanoFramework.System.Math.1.4.4\lib\System.Math.dll</HintPath>
-    </Reference>
+    <None Include="Resources\Button_Up.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBox_Off.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBox_On.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataGridIcon_Asc.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataGridIcon_Desc.gif" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>

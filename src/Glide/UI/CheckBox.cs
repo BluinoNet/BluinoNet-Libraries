@@ -16,8 +16,8 @@ namespace GHI.Glide.UI
     /// </summary>
     public class CheckBox : DisplayObject
     {
-        private Bitmap _CheckBox_On = Resources.GetBitmap(Resources.BinaryResources.CheckBox_On);
-        private Bitmap _CheckBox_Off = Resources.GetBitmap(Resources.BinaryResources.CheckBox_Off);
+        private Bitmap _CheckBox_On = Resources.GetBitmap(Resources.BitmapResources.CheckBox_On);
+        private Bitmap _CheckBox_Off = Resources.GetBitmap(Resources.BitmapResources.CheckBox_Off);
         private bool _pressed = false;
         private bool _checked = false;
 

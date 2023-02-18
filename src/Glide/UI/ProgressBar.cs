@@ -17,8 +17,8 @@ namespace GHI.Glide.UI
     /// </summary>
     public class ProgressBar : DisplayObject
     {
-        private Bitmap _ProgressBar = Resources.GetBitmap(Resources.BinaryResources.ProgressBar);
-        private Bitmap _ProgressBar_Fill = Resources.GetBitmap(Resources.BinaryResources.ProgressBar_Fill);
+        private Bitmap _ProgressBar = Resources.GetBitmap(Resources.BitmapResources.ProgressBar);
+        private Bitmap _ProgressBar_Fill = Resources.GetBitmap(Resources.BitmapResources.ProgressBar_Fill);
 
         /// <summary>
         /// Creates a new ProgressBar.

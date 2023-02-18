@@ -1,4 +1,4 @@
-﻿using FocalTech.FT5xx6;
+﻿//using FocalTech.FT5xx6;
 using System.Device.Gpio;
 using System.Device.I2c;
 using System.Diagnostics;

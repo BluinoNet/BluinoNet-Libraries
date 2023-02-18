@@ -23,7 +23,7 @@ namespace GHI.Glide.UI
         internal string text = String.Empty;
         internal bool pressed;
         internal int leftMargin = 5;
-        internal Bitmap _TextBox = Resources.GetBitmap(Resources.BinaryResources.TextBox);
+        internal Bitmap _TextBox = Resources.GetBitmap(Resources.BitmapResources.TextBox);
 
         /// <summary>
         /// Value changed event.

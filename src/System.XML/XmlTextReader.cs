@@ -5565,7 +5565,7 @@ namespace System.Xml
             internal int bytesUsed;
 
             // text reader input
-            internal TextReader textReader;
+            internal IO.TextReader textReader;
 
             // current line number & position
             internal int lineNo;

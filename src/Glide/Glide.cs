@@ -50,7 +50,7 @@ namespace GHI.Glide
             MessageBoxManager = new MessageBoxManager();
 
             // Show loading
-            Bitmap loading = Resources.GetBitmap(Resources.BinaryResources.loading);
+            Bitmap loading = Resources.GetBitmap(Resources.BitmapResources.loading);
             screen.DrawImage((LCD.Width - loading.Width) / 2, (LCD.Height - loading.Height) / 2, loading, 0, 0, loading.Width, loading.Height);
             screen.Flush();
             OnFlushEvent?.Invoke(Glide.screen.GetBitmap());
@@ -304,11 +304,11 @@ namespace GHI.Glide
 
             keyboard.BitmapUp = new Bitmap[4]
             { 
-                
-                Resources.GetBitmap(Resources.BinaryResources.Keyboard_320x128_Up_Uppercase), 
-                Resources.GetBitmap(Resources.BinaryResources.Keyboard_320x128_Up_Lowercase), 
-                Resources.GetBitmap(Resources.BinaryResources.Keyboard_320x128_Up_Numbers), 
-                Resources.GetBitmap(Resources.BinaryResources.Keyboard_320x128_Up_Symbols)
+             
+                Resources.GetBitmap(Resources.BitmapResources.Keyboard_320x128_Up_Uppercase), 
+                Resources.GetBitmap(Resources.BitmapResources.Keyboard_320x128_Up_Lowercase), 
+                Resources.GetBitmap(Resources.BitmapResources.Keyboard_320x128_Up_Numbers), 
+                Resources.GetBitmap(Resources.BitmapResources.Keyboard_320x128_Up_Symbols)
             };
 
             return keyboard;

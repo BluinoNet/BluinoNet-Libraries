@@ -176,12 +176,12 @@ namespace GHI.Glide.UI
         /// <summary>
         /// Bitmap that represents the up state.
         /// </summary>
-        public Bitmap ButtonUp = Resources.GetBitmap(Resources.BinaryResources.Button_Up);
+        public Bitmap ButtonUp = Resources.GetBitmap(Resources.BitmapResources.Button_Up);
 
         /// <summary>
         /// Bitmap that represents the down state.
         /// </summary>
-        public Bitmap ButtonDown = Resources.GetBitmap(Resources.BinaryResources.Button_Down);
+        public Bitmap ButtonDown = Resources.GetBitmap(Resources.BitmapResources.Button_Down);
 
         /// <summary>
         /// Text on the button.

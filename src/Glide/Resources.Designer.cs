@@ -25,16 +25,16 @@ namespace Glide
                 return Resources.manager;
             }
         }
+        internal static nanoFramework.UI.Bitmap GetBitmap(Resources.BitmapResources id)
+        {
+            return ((nanoFramework.UI.Bitmap)(nanoFramework.Runtime.Native.ResourceUtility.GetObject(ResourceManager, id)));
+        }
         internal static nanoFramework.UI.Font GetFont(Resources.FontResources id)
         {
             return ((nanoFramework.UI.Font)(nanoFramework.Runtime.Native.ResourceUtility.GetObject(ResourceManager, id)));
         }
-        internal static byte[] GetBytes(Resources.BinaryResources id)
-        {
-            return ((byte[])(nanoFramework.Runtime.Native.ResourceUtility.GetObject(ResourceManager, id)));
-        }
         [System.SerializableAttribute()]
-        internal enum BinaryResources : short
+        internal enum BitmapResources : short
         {
             DropdownButton_Down = -31110,
             DataGridIcon_Desc = -27556,

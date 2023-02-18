@@ -21,10 +21,10 @@ namespace GHI.Glide.UI
     /// </summary>
     public class Dropdown : DisplayObject
     {
-        private Bitmap _DropdownText_Up = Resources.GetBitmap(Resources.BinaryResources.DropdownText_Up);
-        private Bitmap _DropdownText_Down = Resources.GetBitmap(Resources.BinaryResources.DropdownText_Down);
-        private Bitmap _DropdownButton_Up = Resources.GetBitmap(Resources.BinaryResources.DropdownButton_Up);
-        private Bitmap _DropdownButton_Down = Resources.GetBitmap(Resources.BinaryResources.DropdownButton_Down);
+        private Bitmap _DropdownText_Up = Resources.GetBitmap(Resources.BitmapResources.DropdownText_Up);
+        private Bitmap _DropdownText_Down = Resources.GetBitmap(Resources.BitmapResources.DropdownText_Down);
+        private Bitmap _DropdownButton_Up = Resources.GetBitmap(Resources.BitmapResources.DropdownButton_Up);
+        private Bitmap _DropdownButton_Down = Resources.GetBitmap(Resources.BitmapResources.DropdownButton_Down);
         private bool _pressed = false;
         private int _leftMargin = 10;
 

@@ -68,14 +68,15 @@ namespace SimpleFormGlide
             GHI.Glide.UI.TextBlock txt2 = (GHI.Glide.UI.TextBlock)window.GetChildByName("TxtTest2");
             btn.TapEvent += (object sender) =>
             {
-                txt.Text = "Glide for NF";
+                btn.Text = "Glide NF";
                 Debug.WriteLine("Button tapped.");
 
                 window.Invalidate();
-                txt.Invalidate();
+                btn.Invalidate();
+                //txt.Invalidate();
             };
-          
-            
+
+            bool IsTouched = false;
             GHI.Glide.Glide.MainWindow = window;
             M5Core2.TouchEvent += (object sender, nanoFramework.M5Core2.TouchEventArgs e) =>
             {
@@ -116,7 +117,16 @@ namespace SimpleFormGlide
                 {
                     Debug.WriteLine(StrMove);
                     Console.Write(StrMove);
-                    GlideTouch.RaiseTouchMoveEvent(sender, new GHI.Glide.TouchEventArgs(new GHI.Glide.Geom.Point(e.X, e.Y)));
+                    if (!IsTouched)
+                    {
+                        GlideTouch.RaiseTouchDownEvent(sender, new GHI.Glide.TouchEventArgs(new GHI.Glide.Geom.Point(e.X, e.Y)));
+                    }
+                    else
+                    {
+                        GlideTouch.RaiseTouchMoveEvent(sender, new GHI.Glide.TouchEventArgs(new GHI.Glide.Geom.Point(e.X, e.Y)));
+                    }
+                    IsTouched = true;
+                    
                 }
 
                 if ((e.TouchEventCategory & TouchEventCategory.LiftUp) == TouchEventCategory.LiftUp)
@@ -124,6 +134,7 @@ namespace SimpleFormGlide
                     Debug.WriteLine(StrLiftUp);
                     Console.Write(StrLiftUp);
                     GlideTouch.RaiseTouchUpEvent(e.X, e.Y);
+                    IsTouched = false;
                 }
 
                 if ((e.TouchEventCategory & TouchEventCategory.DoubleTouch) == TouchEventCategory.DoubleTouch)
